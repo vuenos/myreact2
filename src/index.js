@@ -6,16 +6,19 @@ import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClient, QueryClientProvider } from 'react-query';
 import reportWebVitals from './reportWebVitals';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { RecoilRoot } from 'recoil';
 
 const QueryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-      <App />
-      <ReactQueryDevtools initialIsOpen={true} />
-    </BrowserRouter>
+  <QueryClientProvider client={QueryClient}>
+    <RecoilRoot>
+      <BrowserRouter>
+        <App />
+        <ReactQueryDevtools initialIsOpen={true} />
+      </BrowserRouter>
+    </RecoilRoot>
   </QueryClientProvider>
 );
 
