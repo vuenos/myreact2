@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import apiClient from './service/api';
 
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [movies, setMovies] = useState([]);
+  const [pages, setPages] = useState("");
 
   const getMovies = async () => {
     try {
@@ -14,6 +16,7 @@ const App = () => {
         setTimeout(()=> {
           setLoading(false);
           setMovies(data.results);
+          setPages(data);
         }, 1000)
         console.log('MOVIE_DATA', data.results)
       }
@@ -32,6 +35,23 @@ const App = () => {
     <div>
       <h1>App</h1>
       {loading && <div>Loading....</div>}
+
+      <div>
+        {pages.total_pages}
+        {pages.total_pages > 1 && (
+          <div>
+            {[...Array(pages.total_pages).keys()].map((x) => (
+              <Link
+                key={x + 1}
+                to=""
+              >
+                <span>{x + 1}</span>
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
