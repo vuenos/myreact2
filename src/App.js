@@ -9,7 +9,7 @@ const App = () => {
 
   const getMovies = async () => {
     try {
-      const {data, status} = await apiClient.get(`/top_rated?api_key=${process.env.REACT_APP_APIKEY}`);
+      const {data, status} = await apiClient.get(`/popular?api_key=${process.env.REACT_APP_APIKEY}&page=1`);
       if(status === 200) {
 
         setLoading(true);
@@ -43,11 +43,11 @@ const App = () => {
             {[...Array(pages.total_pages).keys()].map((x) => (
               <Link
                 key={x + 1}
-                to=""
+                to={`x + 1`}
               >
                 <span>{x + 1}</span>
               </Link>
-            ))}
+            )).slice(0, 10)}
           </div>
         )}
       </div>
@@ -56,11 +56,11 @@ const App = () => {
         {movies.map((movie) => (
           <li key={movie.id}>
             <p><img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} width="240" /></p>
-            <h2>{movie.original_title}</h2>
+            <h2><a href={``}>{movie.original_title}</a></h2>
             <div>
               {movie.overview}
             </div>
-            </li>
+          </li>
         ))}
       </ul>
     </div>
