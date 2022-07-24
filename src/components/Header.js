@@ -95,7 +95,7 @@ const Header = () => {
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
                 <Typography textAlign="center">
-                  <NavLink avLink to="/movies" onClick={handleCloseNavMenu}>Movies</NavLink>
+                  <NavLink to="/movies" onClick={handleCloseNavMenu}>Movies</NavLink>
                 </Typography>
               </MenuItem>
             </Menu>
