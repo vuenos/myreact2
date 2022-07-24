@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import apiClient from '../service/api';
 import { useParams } from 'react-router-dom';
+import { TopUtil } from '../components';
 
 const Movie = () => {
     const [loading, setLoading] = useState(false);
@@ -27,6 +28,7 @@ const Movie = () => {
 
     return (
         <div>
+            <TopUtil />
             <h1>{movie.original_title} <sup>{params.movieId}</sup></h1>
             <div>
                 <p><img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} width="240" /></p>
