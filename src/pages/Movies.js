@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import apiClient from '../service/api';
+import { TopUtil } from '../components';
 
 const Movies = () => {
   const [loading, setLoading] = useState(false);
@@ -33,6 +34,7 @@ const Movies = () => {
 
   return (
     <div>
+      <TopUtil />
       <h1>Movies</h1>
       {loading && <div>Loading....</div>}
 
@@ -53,7 +55,7 @@ const Movies = () => {
       </div>
 
       <ul>
-        {movies.map((movie) => (
+        {movies && movies.map((movie) => (
           <li key={movie.id}>
             <p><img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} width="240" /></p>
             <h2><Link to={`/movies/${movie.id}?api_key=${process.env.REACT_APP_APIKEY}`}>{movie.original_title}</Link></h2>
