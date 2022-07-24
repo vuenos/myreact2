@@ -56,7 +56,7 @@ const Movies = () => {
         {movies.map((movie) => (
           <li key={movie.id}>
             <p><img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} width="240" /></p>
-            <h2><a href={``}>{movie.original_title}</a></h2>
+            <h2><Link to={`/movies/${movie.id}?api_key=${process.env.REACT_APP_APIKEY}`}>{movie.original_title}</Link></h2>
             <div>
               {movie.overview}
             </div>

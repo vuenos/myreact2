@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Home, Movies } from './pages';
+import { Home, Movies, Movie } from './pages';
 
 const App = () => {
 
@@ -9,6 +9,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:movieId" elemant={<Movie />} />
       </Routes>
     </div>
   );
