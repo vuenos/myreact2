@@ -36,7 +36,7 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -88,8 +88,16 @@ const Header = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <NavLink to="/" onClick={handleCloseNavMenu}>Home</NavLink>
-              <NavLink to="/movies" onClick={handleCloseNavMenu}>Movies</NavLink>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">
+                  <NavLink to="/" onClick={handleCloseNavMenu}>Home</NavLink>
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">
+                  <NavLink avLink to="/movies" onClick={handleCloseNavMenu}>Movies</NavLink>
+                </Typography>
+              </MenuItem>
             </Menu>
             
           </Box>
