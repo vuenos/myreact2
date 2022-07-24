@@ -9,12 +9,12 @@ const Movie = () => {
 
     const getMovie = async () => {
         try {
-            const { data, status } = await apiClient(`/popular/?api_key=${process.env.REACT_APP_APIKEY}/${params.movieId}`);
+            const { data, status } = await apiClient(`/${params.movieId}?api_key=${process.env.REACT_APP_APIKEY}`);
             if (status === 200) {
                 setLoading(true);
                 setMovie(data);
+                console.log('MOVIE:::', data);
             }
-            console.log('MOVIE:::', data)
 
         } catch (error) {
             console.log(error.message)
@@ -27,9 +27,16 @@ const Movie = () => {
 
     return (
         <div>
-            <h1>Movie{params.movieId}</h1>
+            <h1>{movie.original_title} <sup>{params.movieId}</sup></h1>
             <div>
-                <p>{movie._id}</p>
+                <p><img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} width="240" /></p>
+                <div>
+                    {movie.overview}
+                </div>
+                <ul>
+                    <li>Release date : {movie.release_date}</li>
+                    <li>Homepage : <a href={movie.homepage} target="_blank">{movie.homepage}</a></li>
+                </ul>
             </div>
         </div>
     )
