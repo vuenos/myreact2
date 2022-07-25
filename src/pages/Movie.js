@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import apiClient from '../service/api';
 import { useParams } from 'react-router-dom';
 import { TopUtil } from '../components';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 const Movie = () => {
     const [loading, setLoading] = useState(false);
@@ -27,9 +29,12 @@ const Movie = () => {
     }, [])
 
     return (
-        <div>
+        <Box sx={{ flexGrow: 1 }}>
             <TopUtil />
-            <h1>{movie.original_title} <sup>{params.movieId}</sup></h1>
+            <Typography variant="h2" component="h2" gutterBottom>
+                {movie.original_title} <sup>{params.movieId}</sup>
+            </Typography>
+
             <div>
                 <p><img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} width="240" /></p>
                 <div>
@@ -40,7 +45,7 @@ const Movie = () => {
                     <li>Homepage : <a href={movie.homepage} target="_blank">{movie.homepage}</a></li>
                 </ul>
             </div>
-        </div>
+        </Box>
     )
 }
 
