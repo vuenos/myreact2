@@ -3,6 +3,7 @@ import apiClient from '../service/api';
 import { useParams } from 'react-router-dom';
 import { TopUtil } from '../components';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 const Movie = () => {
@@ -29,22 +30,27 @@ const Movie = () => {
     }, [])
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1, pt: 3, pb: 10 }}>
             <TopUtil />
-            <Typography variant="h2" component="h2" gutterBottom>
-                {movie.original_title} <sup>{params.movieId}</sup>
-            </Typography>
 
-            <div>
-                <p><img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} width="240" /></p>
-                <div>
-                    {movie.overview}
-                </div>
-                <ul>
-                    <li>Release date : {movie.release_date}</li>
-                    <li>Homepage : <a href={movie.homepage} target="_blank">{movie.homepage}</a></li>
-                </ul>
-            </div>
+            <Grid container maxWidth="xl" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                <Grid item xs={4}>
+                    <p><img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} width="100%" /></p>
+                </Grid>
+
+                <Grid item xs={6}>
+                    <Typography variant="h2" component="h2" gutterBottom>
+                        {movie.original_title} <sup>{params.movieId}</sup>
+                    </Typography>
+                    <Typography variant="body1" gutterBottom>
+                        {movie.overview}
+                    </Typography>
+                    <ul>
+                        <li>Release date : {movie.release_date}</li>
+                        <li>Homepage : <a href={movie.homepage} target="_blank">{movie.homepage}</a></li>
+                    </ul>
+                </Grid>
+            </Grid>
         </Box>
     )
 }
