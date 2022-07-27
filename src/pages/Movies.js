@@ -37,7 +37,6 @@ const Movies = () => {
 
   return (
     <div>
-      <TopUtil />
       <h1>Movies</h1>
       {loading && <div>Loading....</div>}
 

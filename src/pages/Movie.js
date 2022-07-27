@@ -25,6 +25,11 @@ const Movie = () => {
         }
     }
 
+    const sectionStyles = {
+        backgroundImage: `url('https://image.tmdb.org/t/p/original/${movie.poster_path}')`,
+        backgroundSize: 'cover'
+    }
+
     useEffect(() => {
         getMovie();
     }, [])
@@ -33,7 +38,7 @@ const Movie = () => {
         <Box sx={{ flexGrow: 1, pt: 3, pb: 10 }}>
             <TopUtil />
 
-            <Grid container maxWidth="xl" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid container maxWidth="xl" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} style={sectionStyles}>
                 <Grid item xs={4}>
                     <p><img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} width="100%" /></p>
                 </Grid>

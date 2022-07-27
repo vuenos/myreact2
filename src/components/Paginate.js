@@ -36,7 +36,7 @@ const Paginate = ({ setPage, pageNumber }) => {
             justifyContent: 'center'
           }} 
           variant='outlined' 
-          count={pageNumber} 
+          count={100}
          />
       </Root>
     </Container>
