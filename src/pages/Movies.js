@@ -14,7 +14,7 @@ import Paginate from '../components/Paginate';
 const Movies = () => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
-  const [numberOfPages, setNumberOfPages] = useState(10)
+  const [numberOfPages, setNumberOfPages] = useState();
   const [movies, setMovies] = useState([]);
 
   const getMovies = async () => {
@@ -40,7 +40,9 @@ const Movies = () => {
       <h1>Movies</h1>
       {loading && <div>Loading....</div>}
 
-      <Paginate setPage={setPage} pageNumber={numberOfPages} />
+      {numberOfPages > 1 && (
+        <Paginate setPage={setPage} numberOfPages={numberOfPages} />
+      )}
 
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>

@@ -19,10 +19,10 @@ const Container = styled('div') (({ theme }) => ({
   color: 'white'
 }));
 
-const Paginate = ({ setPage, pageNumber }) => {
+const Paginate = ({ setPage, numberOfPages = 10 }) => {
 
-  const handleChange = (page) => {
-    setPage(page);
+  const handleChange = (e, value) => {
+    setPage(value);
     window.scroll(0, 0);
   };
 
@@ -30,7 +30,7 @@ const Paginate = ({ setPage, pageNumber }) => {
     <Container>
       <Root>
         <Pagination 
-          onChange={(e) => handleChange(e.target.textContent)}
+          onChange={handleChange}
           style={{ 
             display: 'flex',
             justifyContent: 'center'
