@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import apiClient from '../service/api';
 import { TopUtil } from '../components';
+import Genres from '../components/Genres';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
@@ -10,16 +11,20 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Paginate from '../components/Paginate';
+import useGenre from '../hooks/useGenre';
 
 const Movies = () => {
   const [loading, setLoading] = useState(false);
+  const [genres, setGenres] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState([]);
   const [page, setPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState();
   const [movies, setMovies] = useState([]);
+  const genreforURL = useGenre(selectedGenres);
 
   const getMovies = async () => {
     try {
-      const {data, status} = await apiClient.get(`/popular?api_key=${process.env.REACT_APP_APIKEY}&page=${page}`);
+      const {data, status} = await apiClient.get(`/popular?api_key=${process.env.REACT_APP_APIKEY}&page=${page}&with_genres=${genreforURL}`);
       setMovies(data?.results);
         setLoading(false);
         setNumberOfPages(data?.total_pages);
@@ -33,12 +38,14 @@ const Movies = () => {
 
   useEffect(()=> {
     getMovies();
-  }, [page]);
+  }, [genreforURL, page]);
 
   return (
     <div>
       <h1>Movies</h1>
       {loading && <div>Loading....</div>}
+
+      <Genres />
 
       {numberOfPages > 1 && (
         <Paginate setPage={setPage} numberOfPages={numberOfPages} />
