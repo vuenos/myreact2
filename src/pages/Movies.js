@@ -41,7 +41,7 @@ const Movies = () => {
   }, [genreforURL, page]);
 
   return (
-    <div>
+    <Box sx={{ pb: 13 }}>
       <h1>Movies</h1>
       {loading && <div>Loading....</div>}
 
@@ -54,11 +54,7 @@ const Movies = () => {
         setPage={setPage}
       />
 
-      {numberOfPages > 1 && (
-        <Paginate setPage={setPage} numberOfPages={numberOfPages} />
-      )}
-
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, mt: 4 }}>
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {movies && movies.map((movie) => (
             <Grid item xs={2} sm={4} md={4} key={movie.id}>
@@ -76,7 +72,7 @@ const Movies = () => {
                       <Link to={`/movies/${movie.id}?api_key=${process.env.REACT_APP_APIKEY}`}>{movie.original_title}</Link>
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {movie.overview}
+                      {movie.overview.slice(0, 160)} ...
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -85,7 +81,11 @@ const Movies = () => {
           ))}
         </Grid>
       </Box>
-    </div>
+
+      {numberOfPages > 1 && (
+        <Paginate setPage={setPage} numberOfPages={numberOfPages} />
+      )}
+    </Box>
   )
 }
 

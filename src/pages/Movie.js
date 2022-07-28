@@ -13,7 +13,7 @@ const Movie = () => {
 
     const getMovie = async () => {
         try {
-            const { data, status } = await apiClient(`/${params.movieId}?api_key=${process.env.REACT_APP_APIKEY}`);
+            const { data, status } = await apiClient(`/movie/${params.movieId}?api_key=${process.env.REACT_APP_APIKEY}`);
             if (status === 200) {
                 setLoading(true);
                 setMovie(data);

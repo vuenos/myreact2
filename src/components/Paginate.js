@@ -27,7 +27,7 @@ const Paginate = ({ setPage, numberOfPages = 10 }) => {
   };
 
   return (
-    <Container>
+    <Container sx={{ mt: 5 }}>
       <Root>
         <Pagination 
           onChange={handleChange}
