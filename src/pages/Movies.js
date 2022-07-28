@@ -24,7 +24,7 @@ const Movies = () => {
 
   const getMovies = async () => {
     try {
-      const {data, status} = await apiClient.get(`/popular?api_key=${process.env.REACT_APP_APIKEY}&page=${page}&with_genres=${genreforURL}`);
+      const {data, status} = await apiClient.get(`/movie/popular?api_key=${process.env.REACT_APP_APIKEY}&page=${page}&with_genres=${genreforURL}`);
       setMovies(data?.results);
         setLoading(false);
         setNumberOfPages(data?.total_pages);
@@ -45,7 +45,14 @@ const Movies = () => {
       <h1>Movies</h1>
       {loading && <div>Loading....</div>}
 
-      <Genres />
+      <Genres
+        type="movie"
+        selectedGenres={selectedGenres}
+        setSelectedGenres={setSelectedGenres}
+        genres={genres}
+        setGenres={setGenres}
+        setPage={setPage}
+      />
 
       {numberOfPages > 1 && (
         <Paginate setPage={setPage} numberOfPages={numberOfPages} />
