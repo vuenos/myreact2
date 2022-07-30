@@ -1,7 +1,6 @@
 .media {
     display: flex;
     flex-direction: column;
-    width: 200px;
     padding: 5px;
     margin: 5px 0;
     background-color: #282c34;
@@ -17,7 +16,7 @@
   
   @media (max-width: 550px) {
     .media {
-      width: 46%;
+      width: 100%;
     }
   }
   

@@ -60,15 +60,17 @@ const Movies = () => {
       <Box sx={{ flexGrow: 1, mt: 4 }}>
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {movies && movies.map((movie) => (
-            <MovieContent 
-              key={movie.id}
-              id={movie.id}
-              poster={movie.poster_path}
-              title={movie.title || movie.name}
-              date={movie.first_air_date || movie.release_date}
-              media_type="movie"
-              vote_average={movie.vote_average}
-            />
+            <Grid item xs={2} sm={4} md={4}>
+              <MovieContent 
+                key={movie.id}
+                id={movie.id}
+                poster={movie.poster_path}
+                title={movie.title || movie.name}
+                date={movie.first_air_date || movie.release_date}
+                media_type="movie"
+                vote_average={movie.vote_average}
+              />
+            </Grid>
             // <Grid item xs={2} sm={4} md={4} key={movie.id}>
             //   <Card>
             //     <CardActionArea>
