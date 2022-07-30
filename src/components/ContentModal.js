@@ -22,7 +22,7 @@ const Paper = styled('div') (({ theme }) => ({
   color: "white",
   boxShadow: theme.shadows[5],
   padding: theme.spacing(1, 1, 3),
-}))
+}));
 
 const ContentModal = ({ children, media_type, id }) => {
   const [open, setOpen] = useState(false);
@@ -71,10 +71,6 @@ const ContentModal = ({ children, media_type, id }) => {
         open={open}
         onClose={handleClose}
         closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
       >
         <Fade in={open}>
           {content && (
