@@ -29,6 +29,7 @@
     text-align: center;
     font-size: 17px;
     padding: 8px 0;
+    color: #fff;
   }
   
   .subTitle {
@@ -37,4 +38,8 @@
     padding-bottom: 3px;
     padding: 0 2px;
     padding-bottom: 3px;
+    color: #fff;
   }
+
+  .media:hover .title,
+  .media:hover .subTitle {color: #000;}
