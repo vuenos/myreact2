@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Backdrop, Fade, Button } from '@mui/material';
+import { Fade } from '@mui/material';
+import Modal from '@mui/material/Modal';
+import Backdrop from '@mui/material/Backdrop';
+import Button from '@mui/material/Button';
 import apiClient from '../service/api';
 import {
     img_500,
@@ -9,12 +12,6 @@ import {
 import './ContentModal.css';
 import { YouTube } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
-
-// const Modal = style('div') (({ theme }) => ({
-//   display: "flex",
-//   alignItems: "center",
-//   justifyContent: "center",
-// }));
 
 const Paper = styled('div') (({ theme }) => ({
   width: "90%",
@@ -68,6 +65,7 @@ const ContentModal = ({ children, media_type, id }) => {
         {children}
       </div>
       <Modal
+        className="ModalStyled"
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={open}
@@ -94,7 +92,7 @@ const ContentModal = ({ children, media_type, id }) => {
                 <img 
                   src={
                     content.backdrop_path
-                      ? `${img_500}/${content.backfrop_path}`
+                      ? `${img_500}/${content.backdrop_path}`
                       : unavailableLandscape
                   }
                   alt={content.name || content.title}
