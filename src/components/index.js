@@ -6,5 +6,6 @@ import Paginate from "./Paginate";
 import Genres from "./Genres";
 import MovieContent from "./MovieContent";
 import ContentModal from "./ContentModal";
+import Carousel from "./Carousel";
 
-export { Header, Footer, TopUtil, Paginate, Genres, MovieContent, ContentModal, Notfound }
+export { Header, Footer, TopUtil, Paginate, Genres, MovieContent, ContentModal, Carousel, Notfound }
