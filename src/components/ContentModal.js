@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Backdrop, Fade, Button } from '@mui/material';
 import apiClient from '../service/api';
 import {
@@ -8,14 +8,15 @@ import {
 } from '../config/config';
 import './ContentModal.css';
 import { YouTube } from '@mui/icons-material';
+import { styled } from '@mui/material/styles';
 
-const Modal = style('div') (({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
+// const Modal = style('div') (({ theme }) => ({
+//   display: "flex",
+//   alignItems: "center",
+//   justifyContent: "center",
+// }));
 
-const Paper = style('div') (({ theme }) => ({
+const Paper = styled('div') (({ theme }) => ({
   width: "90%",
   height: "80%",
   backgroundColor: "#39445a",

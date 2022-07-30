@@ -14,6 +14,7 @@ import DoneIcon from '@mui/icons-material/Done';
 import Chip from '@mui/material/Chip';
 import Paginate from '../components/Paginate';
 import useGenre from '../hooks/useGenre';
+import MovieContent from '../components/MovieContent';
 
 const Movies = () => {
   const [loading, setLoading] = useState(false);
@@ -59,35 +60,44 @@ const Movies = () => {
       <Box sx={{ flexGrow: 1, mt: 4 }}>
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {movies && movies.map((movie) => (
-            <Grid item xs={2} sm={4} md={4} key={movie.id}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    image={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                    alt={movie.original_title}
-                  />
+            <MovieContent 
+              key={movie.id}
+              id={movie.id}
+              poster={movie.poster_path}
+              title={movie.title || movie.name}
+              date={movie.first_air_date || movie.release_date}
+              media_type="movie"
+              vote_average={movie.vote_average}
+            />
+            // <Grid item xs={2} sm={4} md={4} key={movie.id}>
+            //   <Card>
+            //     <CardActionArea>
+            //       <CardMedia
+            //         component="img"
+            //         image={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+            //         alt={movie.original_title}
+            //       />
 
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      <Link to={`/movies/${movie.id}?api_key=${process.env.REACT_APP_APIKEY}`}>{movie.original_title}</Link>
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {movie.overview.slice(0, 160)} ...
-                    </Typography>
-                    <Chip 
-                      color={movie.vote_average > 6.9 ? "warning" : "default"}
-                      sx={{ mt: 2 }}
-                      icon={<DoneIcon />}
-                      label={movie.vote_average}
-                      />
-                      <Chip
-                        label={movie.genre_ids}
-                      />
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
+            //       <CardContent>
+            //         <Typography gutterBottom variant="h5" component="div">
+            //           <Link to={`/movies/${movie.id}?api_key=${process.env.REACT_APP_APIKEY}`}>{movie.original_title}</Link>
+            //         </Typography>
+            //         <Typography variant="body2" color="text.secondary">
+            //           {movie.overview.slice(0, 160)} ...
+            //         </Typography>
+            //         <Chip 
+            //           color={movie.vote_average > 6.9 ? "warning" : "default"}
+            //           sx={{ mt: 2 }}
+            //           icon={<DoneIcon />}
+            //           label={movie.vote_average}
+            //           />
+            //           <Chip
+            //             label={movie.genre_ids}
+            //           />
+            //       </CardContent>
+            //     </CardActionArea>
+            //   </Card>
+            // </Grid>
           ))}
         </Grid>
       </Box>

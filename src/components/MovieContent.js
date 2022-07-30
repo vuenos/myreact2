@@ -1,6 +1,6 @@
 import React from 'react';
 import { Badge } from '@mui/material';
-import { img_300, unavailable } from "../../config/config";
+import { img_300, unavailable } from "../config/config";
 import "./SingleContent.css";
 import ContentModal from './ContentModal';
 
@@ -34,4 +34,4 @@ const MovieContent = ({
   )
 }
 
-export default MovieContent
+export default MovieContent;
