@@ -45,9 +45,9 @@ const ContentModal = ({ children, media_type, id }) => {
   }
 
   const getVideo = async () => {
-    const { data } = await apiClient.get(`/${media_type}/${id}/video?api_key=${process.env.REACT_APP_APIKEY}&language=en-US`);
+    const { data } = await apiClient.get(`/${media_type}/${id}/videos?api_key=${process.env.REACT_APP_APIKEY}&language=en-US`);
 
-    setVideo(data.result[0]?.key);
+    setVideo(data.results[0]?.key);
   };
 
   useEffect(() => {
@@ -121,6 +121,7 @@ const ContentModal = ({ children, media_type, id }) => {
                     variant='contained'
                     startIcon={<YouTube />}
                     color="secondary"
+                    target="_blank"
                     href={`https://www.youtube.com/watch?v=${video}`}
                   >
                     Watch the Trailer
