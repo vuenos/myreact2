@@ -12,6 +12,7 @@ import {
 import './ContentModal.css';
 import { YouTube } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
+import Carousel from './Carousel';
 
 const Paper = styled('div') (({ theme }) => ({
   width: "90%",
@@ -112,7 +113,9 @@ const ContentModal = ({ children, media_type, id }) => {
                     {content.overview}
                   </span>
 
-                  <div>Carousel</div>
+                  <div>
+                    <Carousel id={id} media_type={media_type} />
+                  </div>
                   
                   <Button
                     variant='contained'

@@ -45,7 +45,7 @@ const Carousel = ({ id, media_type }) => {
   }, [])
 
   return (
-    <divAliceCarousel 
+    <AliceCarousel 
       mouseTracking
       infinite
       disableDotsControls
@@ -53,6 +53,7 @@ const Carousel = ({ id, media_type }) => {
       responsive={responsive}
       items={items}
       autoPlay
+      autoPlayInterval="800"
     />
   )
 }
