@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -23,10 +24,13 @@ const Footer = () => {
           icon={<RestoreIcon />}
         />
         <BottomNavigationAction
-          label="Favorites"
+          label="Populars"
           value="favorites"
           icon={<FavoriteIcon />}
+          component={Link}
+          to="/movies"
         />
+        
         <BottomNavigationAction
           label="Nearby"
           value="nearby"
