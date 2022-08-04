@@ -7,6 +7,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { useQuery } from 'react-query';
+import { getMovies } from "../api/productsApi";
+
 
 const Home =()=> {
     const { isLoading, error, data } = useQuery(['repoData'], () => fetch('https://api.github.com/repos/tannerlinsley/react-query').then(res => res.json()
