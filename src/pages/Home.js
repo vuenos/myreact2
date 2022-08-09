@@ -7,7 +7,6 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { useQuery } from 'react-query';
-import { getMovies } from "../api/productsApi";
 
 
 const Home =()=> {
