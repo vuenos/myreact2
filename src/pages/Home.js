@@ -4,29 +4,31 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 
-const Home =({ media_type, id })=> {
-  const [movie, setMovie] = useState([])
+const Home =()=> {
+  const [movies, setMovies] = useState([])
     
     const getVideo = async () => {
-      const { data } = await apiClient.get(`/${media_type}/${id}?api_key=${process.env.REACT_APP_APIKEY}&language=en-US`);
+      const { data } = await apiClient.get(`/movie/popular?api_key=${process.env.REACT_APP_APIKEY}&language=en-US`);
   
       try {
-        setMovie(data.results);
+        setMovies(data.results);
       } catch(err) {
         //
       }
     };
 
     useEffect(() => {
-      setMovie();
+      getVideo();
     }, []);
     
 
     return (
         <Box sx={{ width: '100%', maxWidth: 1280 }}>
-           <Typography variant="h2" gutterBottom component="h2">
-                {movie.name}
+           {movies.map((movie) => (
+            <Typography variant="h2" gutterBottom component="h2" key={movie.id}>
+              {movie.title}
             </Typography>
+           ))}
         </Box>
         
     );
